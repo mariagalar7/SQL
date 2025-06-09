@@ -8,7 +8,9 @@ CREATE TABLE Clientes(
 
 /* 2.  Insertar un nuevo cliente en la tabla "Clientes" con id=1, nombre="Juan" y email="juan@example.com".*/
 INSERT INTO clientes(nombre, email)
-VALUES ('Juan', 'juan@example.com');
+VALUES 
+	('Juan', 'juan@example.com'),
+	('Maria', 'maria@example.com');
 
 /* 3.  Actualizar el email del cliente con id=1 a "juan@gmail.com".*/
 UPDATE clientes
@@ -54,7 +56,7 @@ VALUES
 ('Camiseta', 18.20),
 ('Pantalón', 24.50),
 ('Zapatos', 63.99),
-('Complementos', 9.80)
+('Complementos', 9.80);
 
 /* 11. Consultar todos los clientes de la tabla "Clientes". */
 SELECT * FROM Clientes;
@@ -74,7 +76,7 @@ WHERE cantidad >= 5;
 
 /* 15.  Consultar los clientes de la tabla "Clientes" cuyo nombre empiece con la letra "A" */
 SELECT * FROM Clientes
-WHERE nombre LIKE 'A%';
+WHERE nombre LIKE 'M%';
 
 /* 16.  Realizar una consulta que muestre el nombre del cliente y el total de pedidos realizados por cada cliente. */
 SELECT Clientes.nombre, COUNT(Pedidos.id) AS total_pedidos
@@ -93,7 +95,10 @@ ADD COLUMN fecha DATE;
 
 /* 19. Agregar una clave externa a la tabla "Pedidos" que haga referencia a la tabla "Productos" en la columna "producto". */
 ALTER TABLE Pedidos
-ADD CONSTRAINT fk_producto
+ADD COLUMN producto_id INT;
+
+ALTER TABLE Pedidos
+ADD CONSTRAINT fk_producto_id
 FOREIGN KEY (producto_id) REFERENCES Productos(id);
 
 /* 20.  Realizar una consulta que muestre los nombres de los clientes, los nombres de los productos y las cantidades de los pedidos donde coincida la clave externa. */
