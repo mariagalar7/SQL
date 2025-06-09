@@ -7,7 +7,7 @@ CREATE DATABASE MiBaseDeDatos;
 CREATE TABLE Usuarios(
   id SERIAL PRIMARY KEY,
   nombre VARCHAR(255),
-  edad INT,
+  edad INT
 );
 
 /* 3. Inserta dos registros en la tabla "Usuarios".*/
@@ -17,7 +17,7 @@ VALUES
   ('Ana', 28);
 
 /* 4. Actualiza la edad de un usuario en la tabla "Usuarios". */
-UPDATE Usuarios,
+UPDATE Usuarios
 SET edad = 30
 WHERE nombre = 'Ana';
 
@@ -34,7 +34,7 @@ CREATE TABLE Ciudades(
 );
 
 /* 2. Inserta al menos tres registros en la tabla "Ciudades".*/
-INSERT INTO Usuarios(nombre, país)
+INSERT INTO Ciudades(nombre, pais)
 VALUES
   ('Madrid', 'España'),
   ('Copenhague', 'Dinamarca'),
@@ -50,7 +50,7 @@ FOREIGN KEY (ciudad_id) REFERENCES Ciudades(id);
 SELECT 
 Usuarios.nombre AS usuario,
 Ciudades.nombre AS ciudad,
-Ciudades.país
+Ciudades.pais
 FROM Usuarios
 LEFT JOIN Ciudades ON Usuarios.ciudad_id = Ciudades.id;
 
@@ -58,6 +58,6 @@ LEFT JOIN Ciudades ON Usuarios.ciudad_id = Ciudades.id;
 SELECT 
 Usuarios.nombre AS usuario,
 Ciudades.nombre AS ciudad,
-Ciudades.país
+Ciudades.pais
 FROM Usuarios
-INNER JOIN Ciudades ON Usuarios.ciudad_id = Coudades.id;
+INNER JOIN Ciudades ON Usuarios.ciudad_id = Ciudades.id;
